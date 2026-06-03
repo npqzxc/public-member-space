@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded", () => { const input = document.querySelector("input[name=title]"); if (input) input.addEventListener("focus", () => document.body.dataset.mode = "editing"); });

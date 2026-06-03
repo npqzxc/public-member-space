@@ -1,0 +1,16 @@
+import express from "express";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { config } from "./config.js";
+import apiRouter from "./routes/api.js";
+import webRouter from "./routes/web.js";
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const app = express();
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(process.cwd(), "public")));
+app.get("/health", (_req, res) => res.json({ ok: true, app: config.title }));
+app.use("/api", apiRouter);
+app.use(webRouter);
+app.listen(config.port, () => console.log(`${config.title} listening on http://0.0.0.0:${config.port}`));

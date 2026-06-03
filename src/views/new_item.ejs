@@ -1,0 +1,12 @@
+<%- include("layout", { body: `
+  <section class="panel form-panel"><h2>新建任务卡</h2>${error ? `<p class="error">${error}</p>` : ""}
+  <form method="post" action="/work-items">
+    <label>会员分组 Code<input name="workspace_code" placeholder="NORTH" /></label>
+    <label>标题<input name="title" /></label>
+    <label>阶段<select name="stage"><option>draft</option><option>active</option><option>review</option><option>blocked</option></select></label>
+    <label>优先级<select name="priority"><option>medium</option><option>high</option><option>urgent</option></select></label>
+    <label>到期日<input type="date" name="due_date" /></label>
+    <label>说明<textarea name="details" rows="5"></textarea></label>
+    <button type="submit">创建</button>
+  </form></section>
+` }) %>

@@ -1,0 +1,15 @@
+<%- include("layout", { body: `
+  <section class="hero">
+    <div>
+      <p class="eyebrow">Member Canvas</p>
+      <h2>会员协作总览</h2>
+      <p>围绕 会员分组 和 任务卡 组织 dashboard、列表页与详情页。</p>
+    </div>
+    <div class="metrics">
+      <article><span>分组总数</span><strong>${dashboard.workspaceTotal}</strong></article>
+      <article><span>活跃事项</span><strong>${dashboard.activeItems}</strong></article>
+      <article><span>紧急事项</span><strong>${dashboard.urgentItems}</strong></article>
+    </div>
+  </section>
+  <section class="panel"><h3>即将到期</h3><ul>${dashboard.upcoming.map((item) => `<li><strong>${item.workspace_code}</strong> · ${item.title} · ${item.due_date} · ${item.stage}</li>`).join("")}</ul></section>
+` }) %>

@@ -1,0 +1,4 @@
+<%- include("layout", { body: !detail ? `<section class="panel"><h2>未找到记录</h2></section>` : `
+  <section class="panel"><p class="eyebrow">${detail.workspace.code}</p><h2>${detail.workspace.name}</h2><p>${detail.workspace.summary}</p><div class="meta"><span>${detail.workspace.status}</span><span>${detail.workspace.owner}</span></div></section>
+  <section class="panel"><h3>事项列表</h3><table><thead><tr><th>标题</th><th>阶段</th><th>优先级</th><th>到期</th></tr></thead><tbody>${detail.items.map((item) => `<tr><td>${item.title}</td><td>${item.stage}</td><td>${item.priority}</td><td>${item.due_date}</td></tr>`).join("")}</tbody></table></section>
+` }) %>
